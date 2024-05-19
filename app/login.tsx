@@ -77,7 +77,7 @@ const Login = () => {
 
         <View style={styles.inputContainer}>
           <TextInput
-            style={styles.input}
+            style={[styles.input, { flex: 1 }]}
             placeholder="Country code"
             placeholderTextColor={Colors.gray}
             keyboardType="numeric"
@@ -85,7 +85,7 @@ const Login = () => {
           />
 
           <TextInput
-            style={[styles.input, { flex: 1 }]}
+            style={[styles.input, { flex: 4 }]}
             placeholder="Phone Number"
             placeholderTextColor={Colors.gray}
             keyboardType="numeric"
