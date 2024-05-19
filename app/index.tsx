@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-between',
+    backgroundColor: '#000',
   },
   video: {
     width: '100%',
@@ -71,6 +72,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 36,
     fontWeight: '900',
+    textAlign: 'center',
     color: 'white',
     textTransform: 'uppercase',
   },
