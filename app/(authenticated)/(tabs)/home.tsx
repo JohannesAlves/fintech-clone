@@ -7,10 +7,11 @@ import { useBalanceStore } from '@/store/balanceStore';
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { Button, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useHeaderHeight } from '@react-navigation/elements';
 
 const Page = () => {
-  const { balance, clearTransactions, runTransaction, transactions } =
-    useBalanceStore();
+  const { balance, clearTransactions, runTransaction, transactions } = useBalanceStore();
+  const headerHeight = useHeaderHeight();
 
   const onAddMoney = () => {
     runTransaction({
@@ -22,7 +23,12 @@ const Page = () => {
   };
 
   return (
-    <ScrollView style={{ backgroundColor: Colors.background }}>
+    <ScrollView
+      style={{ backgroundColor: Colors.background }}
+      contentContainerStyle={{
+        paddingTop: headerHeight,
+      }}
+    >
       <View style={styles.account}>
         <View style={styles.row}>
           <Text style={styles.currency}>R$</Text>
@@ -32,11 +38,7 @@ const Page = () => {
 
       <View style={styles.actionRow}>
         <RoundButton icon={'add'} text="Add money" onPress={onAddMoney} />
-        <RoundButton
-          icon={'refresh'}
-          text="Exchange"
-          onPress={clearTransactions}
-        />
+        <RoundButton icon={'refresh'} text="Exchange" onPress={clearTransactions} />
         <RoundButton icon={'list'} text="Details" />
         <Dropdown />
       </View>
@@ -44,9 +46,7 @@ const Page = () => {
       <Text style={defaultStyles.sectionHeader}>Transactions</Text>
       <View style={styles.transactions}>
         {transactions.length === 0 && (
-          <Text style={{ padding: 14, color: Colors.gray }}>
-            No transactions yet
-          </Text>
+          <Text style={{ padding: 14, color: Colors.gray }}>No transactions yet</Text>
         )}
 
         {transactions.map((transaction) => (
@@ -64,9 +64,7 @@ const Page = () => {
 
             <View style={{ flex: 1 }}>
               <Text style={{ fontWeight: '500' }}>{transaction.title}</Text>
-              <Text style={{ color: Colors.gray, fontSize: 12 }}>
-                11-02-2001
-              </Text>
+              <Text style={{ color: Colors.gray, fontSize: 12 }}>11-02-2001</Text>
             </View>
             <Text style={{ color: transaction.amount > 0 ? 'green' : 'red' }}>
               R${transaction.amount}
