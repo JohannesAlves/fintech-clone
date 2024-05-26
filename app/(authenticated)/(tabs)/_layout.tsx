@@ -35,7 +35,7 @@ const Layout = () => {
             <FontAwesome name="registered" size={size} color={color} />
           ),
           header: () => <CustomHeader />,
-          // headerTransparent: true,
+          headerTransparent: true,
         }}
       />
 
@@ -63,9 +63,9 @@ const Layout = () => {
         name="crypto"
         options={{
           title: 'Crypto',
-          tabBarIcon: ({ size, color }) => (
-            <FontAwesome name="th" size={size} color={color} />
-          ),
+          tabBarIcon: ({ size, color }) => <FontAwesome name="th" size={size} color={color} />,
+          header: () => <CustomHeader />,
+          headerTransparent: true,
         }}
       />
 
@@ -73,9 +73,7 @@ const Layout = () => {
         name="lifestyle"
         options={{
           title: 'Lifestyle',
-          tabBarIcon: ({ size, color }) => (
-            <FontAwesome name="bitcoin" size={size} color={color} />
-          ),
+          tabBarIcon: ({ size, color }) => <FontAwesome name="bitcoin" size={size} color={color} />,
         }}
       />
     </Tabs>

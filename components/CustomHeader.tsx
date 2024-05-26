@@ -10,7 +10,7 @@ const CustomHeader = () => {
   const { top } = useSafeAreaInsets();
 
   return (
-    <BlurView intensity={80} tint={'extraLight'} style={{ paddingTop: top }}>
+    <BlurView intensity={50} tint={'extraLight'} style={{ paddingTop: top }}>
       <View
         style={[
           styles.container,
@@ -33,23 +33,12 @@ const CustomHeader = () => {
               alignItems: 'center',
             }}
           >
-            <Text style={{ color: '#fff', fontWeight: '500', fontSize: 16 }}>
-              SG
-            </Text>
+            <Text style={{ color: '#fff', fontWeight: '500', fontSize: 16 }}>SG</Text>
           </TouchableOpacity>
         </Link>
         <View style={styles.searchSection}>
-          <Ionicons
-            style={styles.searchIcon}
-            name="search"
-            size={20}
-            color={Colors.dark}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Search"
-            placeholderTextColor={Colors.dark}
-          />
+          <Ionicons style={styles.searchIcon} name="search" size={20} color={Colors.dark} />
+          <TextInput style={styles.input} placeholder="Search" placeholderTextColor={Colors.dark} />
         </View>
         <View style={styles.circle}>
           <Ionicons name={'stats-chart'} size={20} color={Colors.dark} />
