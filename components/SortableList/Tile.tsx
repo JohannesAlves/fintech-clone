@@ -43,7 +43,7 @@ const Tile = ({ id }: TileProps) => {
             paddingTop: 10,
           }}
         >
-          1024€
+          1024R$
         </Text>
       </View>
     );
@@ -52,15 +52,10 @@ const Tile = ({ id }: TileProps) => {
   if (id === 'cashback') {
     return (
       <View
-        style={[
-          styles.container,
-          { alignItems: 'center', justifyContent: 'center' },
-        ]}
+        style={[styles.container, { alignItems: 'center', justifyContent: 'center' }]}
         pointerEvents="none"
       >
-        <View
-          style={{ alignItems: 'center', justifyContent: 'center', gap: 10 }}
-        >
+        <View style={{ alignItems: 'center', justifyContent: 'center', gap: 10 }}>
           <View
             style={{
               height: 60,
@@ -71,15 +66,9 @@ const Tile = ({ id }: TileProps) => {
               justifyContent: 'center',
             }}
           >
-            <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 18 }}>
-              5%
-            </Text>
+            <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 18 }}>5%</Text>
           </View>
-          <Text
-            style={{ color: Colors.gray, fontWeight: 'bold', fontSize: 18 }}
-          >
-            Cashback
-          </Text>
+          <Text style={{ color: Colors.gray, fontWeight: 'bold', fontSize: 18 }}>Cashback</Text>
         </View>
       </View>
     );
@@ -116,11 +105,9 @@ const Tile = ({ id }: TileProps) => {
                   paddingVertical: 10,
                 }}
               >
-                {transactions[transactions.length - 1].amount}€
+                {transactions[transactions.length - 1].amount}R$
               </Text>
-              <Text
-                style={{ color: Colors.gray, fontWeight: 'bold', fontSize: 16 }}
-              >
+              <Text style={{ color: Colors.gray, fontWeight: 'bold', fontSize: 16 }}>
                 {transactions[transactions.length - 1].title}
               </Text>
             </>
@@ -133,9 +120,7 @@ const Tile = ({ id }: TileProps) => {
   if (id === 'cards') {
     return (
       <View style={styles.container} pointerEvents="none">
-        <Text style={{ color: Colors.gray, fontWeight: '500', fontSize: 16 }}>
-          Cards
-        </Text>
+        <Text style={{ color: Colors.gray, fontWeight: '500', fontSize: 16 }}>Cards</Text>
         <Ionicons
           name="card"
           size={50}
