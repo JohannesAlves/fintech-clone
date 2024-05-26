@@ -12,6 +12,9 @@ import { StatusBar } from 'expo-status-bar';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { ClerkProvider, useAuth } from '@clerk/clerk-expo';
 import * as SecureStore from 'expo-secure-store';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
@@ -72,7 +75,7 @@ const InitialLayout = () => {
     const inAuthGroup = segments[0] === '(authenticated)';
 
     if (isSignedIn && !inAuthGroup) {
-      router.replace('/(authenticated)/(tabs)/home');
+      router.replace('/(authenticated)/(tabs)/crypto');
     }
 
     if (!isSignedIn) router.replace('/');
@@ -114,21 +117,14 @@ const InitialLayout = () => {
           headerRight: () => (
             <Link href={'/help'} asChild>
               <TouchableOpacity>
-                <Ionicons
-                  name="help-circle-outline"
-                  size={34}
-                  color={Colors.dark}
-                />
+                <Ionicons name="help-circle-outline" size={34} color={Colors.dark} />
               </TouchableOpacity>
             </Link>
           ),
         }}
       />
 
-      <Stack.Screen
-        name="help"
-        options={{ title: 'Help', presentation: 'modal' }}
-      />
+      <Stack.Screen name="help" options={{ title: 'Help', presentation: 'modal' }} />
 
       <Stack.Screen
         name="verify/[phone]"
@@ -145,24 +141,20 @@ const InitialLayout = () => {
         }}
       />
 
-      <Stack.Screen
-        name="(authenticated)/(tabs)"
-        options={{ headerShown: false }}
-      />
+      <Stack.Screen name="(authenticated)/(tabs)" options={{ headerShown: false }} />
     </Stack>
   );
 };
 
 const RootLayoutNav = () => {
   return (
-    <ClerkProvider
-      publishableKey={CLERK_PUBLISHABLE_KEY!}
-      tokenCache={tokenCache}
-    >
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <StatusBar style="light" />
-        <InitialLayout />
-      </GestureHandlerRootView>
+    <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY!} tokenCache={tokenCache}>
+      <QueryClientProvider client={queryClient}>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <StatusBar style="light" />
+          <InitialLayout />
+        </GestureHandlerRootView>
+      </QueryClientProvider>
     </ClerkProvider>
   );
 };

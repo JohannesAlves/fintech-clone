@@ -25,12 +25,16 @@
     },
     "web": {
       "bundler": "metro",
-      "output": "static",
+      "output": "server",
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router",
-      "expo-asset",
+      [
+        "expo-router",
+        {
+          "origin": "https://pro-api.coinmarketcap.com"
+        }
+      ],
       "expo-secure-store"
     ],
     "experiments": {
